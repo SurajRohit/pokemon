@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header">
+    <h3>Pokemons</h3>
+    <input placeholder="search here.." type="text" class="inputStyle" (keyup)="onSearch($event)">
+  </div>
+  <div *ngFor="let pokemon of pokemons" >
+    <ngb-accordion  #acc="ngbAccordion" (click)="openPokemon(pokemon.url)"  activeIds="ngb-panel-0">
+      <ngb-panel title="{{pokemon.name}}">
+        <ng-template ngbPanelContent>
+         
+            <ngb-alert [dismissible]="false">
+              <strong>Name = </strong>{{selectedPokemon.name}}
+            </ngb-alert>
+            <ngb-alert [dismissible]="false">
+              <strong>height = </strong>{{selectedPokemon.height}}
+            </ngb-alert>
+            <ngb-alert [dismissible]="false">
+              <strong>weight = </strong>{{selectedPokemon.weight}}
+            </ngb-alert>
+             <h4>{{pokemon.abilities}}</h4>
+            <div *ngFor="let ability of pokemon.abilities" >
+              <h3>{{ability}}</h3>
+            </div>
+        </ng-template>
+      </ngb-panel>
+  </ngb-accordion>
+  </div>
+</body>
+</html>
